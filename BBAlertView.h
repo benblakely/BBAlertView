@@ -15,7 +15,7 @@
 @property (nonatomic, copy) void (^willDismissHandler)(BBAlertView *alertView, NSInteger buttonIndex);
 @property (nonatomic, copy) void (^didDismissHandler)(BBAlertView *alertView, NSInteger buttonIndex);
 
-- (id)initWithTitle:(NSString *)title message:(NSString *)message;
+- (id)initWithTitle:(NSString *)title message:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle;
 
 - (NSInteger)addButtonWithTitle:(NSString *)title clicked:(void (^)(BBAlertView *alertView))handler;
 - (NSInteger)addButtonWithTitle:(NSString *)title willDismiss:(void (^)(BBAlertView *alertView))handler;
@@ -24,8 +24,6 @@
                         clicked:(void (^)(BBAlertView *alertView))clicked
                     willDismiss:(void (^)(BBAlertView *alertView))willDismiss
                      didDismiss:(void (^)(BBAlertView *alertView))didDismiss;
-
-- (NSInteger)addCancelButtonWithTitle:(NSString *)title;
 
 - (NSString *)buttonTitleAtIndex:(NSInteger)buttonIndex;
 - (UITextField *)textFieldAtIndex:(NSInteger)textFieldIndex;

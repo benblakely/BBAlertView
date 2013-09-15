@@ -5,11 +5,9 @@ Life is easier with blocks but UIAlertView was built in a time before blocks. En
 With BBAlertView it’s far easier to keep code nice and simple, especially when you have multiple alert views per view controller or you need to pass around an object. For example:
 
     - (void)renameNote:(BBNote *)note {
-        BBAlertView *alertView = [[BBAlertView alloc] initWithTitle:NSLocalizedString(@"Rename Note", nil) message:nil];
+        BBAlertView *alertView = [[BBAlertView alloc] initWithTitle:NSLocalizedString(@"Rename Note", nil) message:nil cancelButtonTitle:NSLocalizedString(@"Cancel", nil)];
         
         [alertView setAlertViewStyle:UIAlertViewStylePlainTextInput];
-        
-        [alertView addCancelButtonWithTitle:NSLocalizedString(@"Cancel", nil)];
         
         [alertView addButtonWithTitle:NSLocalizedString(@"Rename", nil) clicked:^(BBAlertView *alertView) {
             UITextField *nameField = [alertView textFieldAtIndex:0];

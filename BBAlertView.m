@@ -23,10 +23,10 @@
 }
 
 - (id)init {
-    return [self initWithTitle:nil message:nil];
+    return [self initWithTitle:nil message:nil cancelButtonTitle:nil];
 }
 
-- (id)initWithTitle:(NSString *)title message:(NSString *)message {
+- (id)initWithTitle:(NSString *)title message:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle {
     self = [super init];
     if (!self) return nil;
     
@@ -34,6 +34,11 @@
     [self setWillDismissHandlersByButtonIndex:[NSMutableDictionary dictionary]];
     [self setDidDismissHandlersByButtonIndex:[NSMutableDictionary dictionary]];
     [self setAlertView:[[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:nil otherButtonTitles:nil]];
+    
+    if (cancelButtonTitle) {
+        NSUInteger buttonIndex = [self addButtonWithTitle:title clicked:nil];
+        [self setCancelButtonIndex:buttonIndex];
+    }
     
     return self;
 }
@@ -88,12 +93,6 @@
     [self setHandler:willDismissHandler buttonIndex:buttonIndex dictionary:[self willDismissHandlersByButtonIndex]];
     [self setHandler:didDismissHandler buttonIndex:buttonIndex dictionary:[self didDismissHandlersByButtonIndex]];
     
-    return buttonIndex;
-}
-
-- (NSInteger)addCancelButtonWithTitle:(NSString *)title {
-    NSUInteger buttonIndex = [self addButtonWithTitle:title clicked:nil];
-    [self setCancelButtonIndex:buttonIndex];
     return buttonIndex;
 }
 
