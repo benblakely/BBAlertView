@@ -36,7 +36,7 @@
     [self setAlertView:[[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:nil otherButtonTitles:nil]];
     
     if (cancelButtonTitle) {
-        NSUInteger buttonIndex = [self addButtonWithTitle:title clicked:nil];
+        NSUInteger buttonIndex = [self addButtonWithTitle:cancelButtonTitle clicked:nil];
         [self setCancelButtonIndex:buttonIndex];
     }
     
